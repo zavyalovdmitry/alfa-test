@@ -12,24 +12,43 @@ function Home({ dogsData, fetchDogs }) {
   const [showLike, setShowLike] = useState();
   const [showCard, setShowCard] = useState();
 
+  const [showDeleted, setShowDeleted] = useState(false);
+  const [showLiked, setShowLiked] = useState(false);
+
+  const saveToLocalStorage = () => {
+    localStorage.setItem('likes', JSON.stringify(showLike));
+    localStorage.setItem('cards', JSON.stringify(showCard));
+  };
+
+  useEffect(() => {
+    // fetchDogs();
+    // saveToLocalStorage();
+    showLike ? localStorage.setItem('likes', JSON.stringify(showLike)) : null;
+    showCard ? localStorage.setItem('cards', JSON.stringify(showCard)) : null;
+
+    // console.log(showLike);
+  }, [showLike, showCard]);
+
   useEffect(() => {
     fetchDogs();
+    // return saveToLocalStorage();
+    // console.log(JSON.parse(localStorage.getItem('cards')));
   }, []);
 
   useEffect(() => {
     if (!dogsData.loading) {
-      // !localStorage.getItem('cards')
-      //   ?
-      setShowCard(
-        Array.apply(null, Array(dogsData.dogs.length)).map(() => true)
-      );
-      //   : null;
-      // !localStorage.getItem('likes')
-      //   ?
-      setShowLike(
-        Array.apply(null, Array(dogsData.dogs.length)).map(() => false)
-      );
-      // : null;
+      localStorage.getItem('cards') === 'undefined' ||
+      JSON.parse(localStorage.getItem('cards')).length === 0
+        ? setShowCard(
+            Array.apply(null, Array(dogsData.dogs.length)).map(() => true)
+          )
+        : setShowCard(JSON.parse(localStorage.getItem('cards')));
+      localStorage.getItem('likes') === 'undefined' ||
+      JSON.parse(localStorage.getItem('likes')).length === 0
+        ? setShowLike(
+            Array.apply(null, Array(dogsData.dogs.length)).map(() => false)
+          )
+        : setShowLike(JSON.parse(localStorage.getItem('likes')));
     }
     // console.log(showCard);
   }, [dogsData.loading]);
@@ -43,13 +62,20 @@ function Home({ dogsData, fetchDogs }) {
     <h2>Loading...</h2>
   ) : (
     <>
-      <HeaderContainer />
+      <HeaderContainer
+        showDeleted={showDeleted}
+        setShowDeleted={setShowDeleted}
+        showLiked={showLiked}
+        setShowLiked={setShowLiked}
+      />
       <CardsContainer
         dogsData={dogsData}
         showLike={showLike}
         showCard={showCard}
         setShowCard={setShowCard}
         setShowLike={setShowLike}
+        showDeleted={showDeleted}
+        showLiked={showLiked}
       />
     </>
   );

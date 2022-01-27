@@ -12,6 +12,8 @@ export function CardsContainer({
   setShowLike,
   showCard,
   setShowCard,
+  showDeleted,
+  showLiked,
 }) {
   const deleteCard = (e, i) => {
     const arr = Object.assign([], showCard);
