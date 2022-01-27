@@ -7,6 +7,7 @@ import {
   Deleted,
   UnLiked,
   UnDeleted,
+  Text,
 } from './styles/header';
 
 export default function Header({ children, ...restProps }) {
@@ -35,4 +36,8 @@ Header.UnLiked = function HeaderUnLiked({ children, ...restProps }) {
 
 Header.UnDeleted = function HeaderLUnDeleted({ children, ...restProps }) {
   return <UnDeleted {...restProps}>{children}</UnDeleted>;
+};
+
+Header.Text = function HeaderLText({ children, ...restProps }) {
+  return <Text {...restProps}>{children}</Text>;
 };

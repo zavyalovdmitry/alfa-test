@@ -1,10 +1,5 @@
 /* eslint-disable no-shadow */
 import React, { useState } from 'react';
-// import {
-//   TrashIcon,
-// } from '@heroicons/react/solid';
-// import { TrashIcon } from '@heroicons/react/outline';
-/* eslint-disable no-empty-pattern */
 import { Header } from '../components';
 
 export function HeaderContainer({
@@ -15,7 +10,6 @@ export function HeaderContainer({
 }) {
   const toggleShowDeleted = () => {
     setShowDeleted(!showDeleted);
-    // console.log(showDeleted);
   };
 
   const toggleShowLiked = () => {
@@ -26,16 +20,17 @@ export function HeaderContainer({
     <Header>
       <Header.Title>Choose your Doggo! </Header.Title>
       <Header.Filter>
-        {/* Filter by */}
-        {/* {showDeleted ? (
-          <Header.Deleted onClick={() => toggleShowDeleted()} />
-        ) : (
-          <Header.UnDeleted onClick={() => toggleShowDeleted()} />
-        )} */}
+        <Header.Text>Filter by</Header.Text>
         {showLiked ? (
           <Header.Liked onClick={() => toggleShowLiked()} />
         ) : (
           <Header.UnLiked onClick={() => toggleShowLiked()} />
+        )}
+        <Header.Text>Show deleted</Header.Text>
+        {showDeleted ? (
+          <Header.Deleted onClick={() => toggleShowDeleted()} />
+        ) : (
+          <Header.UnDeleted onClick={() => toggleShowDeleted()} />
         )}
       </Header.Filter>
     </Header>

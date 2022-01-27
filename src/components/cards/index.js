@@ -8,6 +8,7 @@ import {
   DeleteIcon,
   LikeIcon,
   UnLikeIcon,
+  UnDeleteIcon,
 } from './styles/cards';
 
 export default function Cards({ children, ...restProps }) {
@@ -40,4 +41,8 @@ Cards.LikeIcon = function CardsLikeIcon({ children, ...restProps }) {
 
 Cards.UnLikeIcon = function CardsUnLikeIcon({ children, ...restProps }) {
   return <UnLikeIcon {...restProps}>{children}</UnLikeIcon>;
+};
+
+Cards.UnDeleteIcon = function CardsUnDeleteIcon({ children, ...restProps }) {
+  return <UnDeleteIcon {...restProps}>{children}</UnDeleteIcon>;
 };

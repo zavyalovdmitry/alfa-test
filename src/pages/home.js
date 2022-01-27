@@ -4,7 +4,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { CardsContainer } from '../containers/cards';
-// import { connect } from 'react-redux';
 import { HeaderContainer } from '../containers/header';
 import { fetchDogs } from '../redux';
 
@@ -21,18 +20,18 @@ function Home({ dogsData, fetchDogs }) {
   };
 
   useEffect(() => {
-    // fetchDogs();
-    // saveToLocalStorage();
     showLike ? localStorage.setItem('likes', JSON.stringify(showLike)) : null;
     showCard ? localStorage.setItem('cards', JSON.stringify(showCard)) : null;
-
-    // console.log(showLike);
   }, [showLike, showCard]);
 
   useEffect(() => {
     fetchDogs();
-    // return saveToLocalStorage();
-    // console.log(JSON.parse(localStorage.getItem('cards')));
+    !localStorage.getItem('cards')
+      ? localStorage.setItem('cards', 'undefined')
+      : null;
+    !localStorage.getItem('likes')
+      ? localStorage.setItem('likes', 'undefined')
+      : null;
   }, []);
 
   useEffect(() => {
@@ -50,14 +49,8 @@ function Home({ dogsData, fetchDogs }) {
           )
         : setShowLike(JSON.parse(localStorage.getItem('likes')));
     }
-    // console.log(showCard);
   }, [dogsData.loading]);
 
-  // useEffect(() => {
-  //   console.log(dogsData);
-  // }, [dogsData]);
-
-  // dogsData ? console.log(dogsData) : null;
   return dogsData.loading ? (
     <h2>Loading...</h2>
   ) : (
@@ -79,7 +72,6 @@ function Home({ dogsData, fetchDogs }) {
       />
     </>
   );
-  // return <h2>Loading...</h2>;
 }
 
 const mapStateToProps = (state) => ({
