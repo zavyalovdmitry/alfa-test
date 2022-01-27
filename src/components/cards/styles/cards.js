@@ -31,6 +31,7 @@ export const Item = styled.div`
 
   &.inactive {
     opacity: 0.5;
+    box-shadow: none;
   }
 `;
 

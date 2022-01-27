@@ -29,30 +29,7 @@ export function CardsContainer({
       {dogsData.dogs
         ? dogsData.dogs.map((item, i) =>
             item.breeds.length && (showCard[i] || showDeleted) ? (
-              showLiked ? (
-                showLike[i] ? (
-                  <Cards.Item
-                    key={item.id}
-                    className={showCard[i] ? 'active' : 'inactive'}
-                  >
-                    {showCard[i] ? (
-                      <Cards.DeleteIcon onClick={(e) => deleteCard(e, i)} />
-                    ) : (
-                      <Cards.UnDeleteIcon onClick={(e) => deleteCard(e, i)} />
-                    )}
-                    {showLike[i] ? (
-                      <Cards.UnLikeIcon onClick={(e) => likeCard(e, i)} />
-                    ) : (
-                      <Cards.LikeIcon onClick={(e) => likeCard(e, i)} />
-                    )}
-                    <Cards.ItemPhoto src={item.url} alt="doggo" />{' '}
-                    <Cards.ItemTitle>{item.breeds[0].name}</Cards.ItemTitle>
-                    <Cards.ItemText>
-                      {item.breeds[0].temperament}
-                    </Cards.ItemText>
-                  </Cards.Item>
-                ) : null
-              ) : (
+              (showLiked && showLike[i]) || !showLiked ? (
                 <Cards.Item
                   key={item.id}
                   className={showCard[i] ? 'active' : 'inactive'}
@@ -71,7 +48,7 @@ export function CardsContainer({
                   <Cards.ItemTitle>{item.breeds[0].name}</Cards.ItemTitle>
                   <Cards.ItemText>{item.breeds[0].temperament}</Cards.ItemText>
                 </Cards.Item>
-              )
+              ) : null
             ) : null
           )
         : null}

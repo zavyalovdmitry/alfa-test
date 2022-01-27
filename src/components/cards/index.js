@@ -19,8 +19,8 @@ Cards.Item = function CardsItem({ children, ...restProps }) {
   return <Item {...restProps}>{children}</Item>;
 };
 
-Cards.ItemPhoto = function CardsItemPhoto({ children, ...restProps }) {
-  return <ItemPhoto {...restProps}>{children}</ItemPhoto>;
+Cards.ItemPhoto = function CardsItemPhoto({ ...restProps }) {
+  return <ItemPhoto {...restProps} />;
 };
 
 Cards.ItemTitle = function CardsItemTitle({ children, ...restProps }) {
@@ -31,18 +31,18 @@ Cards.ItemText = function CardsItemText({ children, ...restProps }) {
   return <ItemText {...restProps}>{children}</ItemText>;
 };
 
-Cards.DeleteIcon = function CardsDeleteIcon({ children, ...restProps }) {
-  return <DeleteIcon {...restProps}>{children}</DeleteIcon>;
+Cards.DeleteIcon = function CardsDeleteIcon({ ...restProps }) {
+  return <DeleteIcon {...restProps} />;
 };
 
-Cards.LikeIcon = function CardsLikeIcon({ children, ...restProps }) {
-  return <LikeIcon {...restProps}>{children}</LikeIcon>;
+Cards.LikeIcon = function CardsLikeIcon({ ...restProps }) {
+  return <LikeIcon {...restProps} />;
 };
 
-Cards.UnLikeIcon = function CardsUnLikeIcon({ children, ...restProps }) {
-  return <UnLikeIcon {...restProps}>{children}</UnLikeIcon>;
+Cards.UnLikeIcon = function CardsUnLikeIcon({ ...restProps }) {
+  return <UnLikeIcon {...restProps} />;
 };
 
-Cards.UnDeleteIcon = function CardsUnDeleteIcon({ children, ...restProps }) {
-  return <UnDeleteIcon {...restProps}>{children}</UnDeleteIcon>;
+Cards.UnDeleteIcon = function CardsUnDeleteIcon({ ...restProps }) {
+  return <UnDeleteIcon {...restProps} />;
 };

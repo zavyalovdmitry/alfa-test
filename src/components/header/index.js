@@ -22,20 +22,20 @@ Header.Filter = function HeaderFilter({ children, ...restProps }) {
   return <Filter {...restProps}>{children}</Filter>;
 };
 
-Header.Liked = function HeaderLiked({ children, ...restProps }) {
-  return <Liked {...restProps}>{children}</Liked>;
+Header.Liked = function HeaderLiked({ ...restProps }) {
+  return <Liked {...restProps} />;
 };
 
-Header.Deleted = function HeaderLDeleted({ children, ...restProps }) {
-  return <Deleted {...restProps}>{children}</Deleted>;
+Header.Deleted = function HeaderLDeleted({ ...restProps }) {
+  return <Deleted {...restProps} />;
 };
 
-Header.UnLiked = function HeaderUnLiked({ children, ...restProps }) {
-  return <UnLiked {...restProps}>{children}</UnLiked>;
+Header.UnLiked = function HeaderUnLiked({ ...restProps }) {
+  return <UnLiked {...restProps} />;
 };
 
-Header.UnDeleted = function HeaderLUnDeleted({ children, ...restProps }) {
-  return <UnDeleted {...restProps}>{children}</UnDeleted>;
+Header.UnDeleted = function HeaderLUnDeleted({ ...restProps }) {
+  return <UnDeleted {...restProps} />;
 };
 
 Header.Text = function HeaderLText({ children, ...restProps }) {

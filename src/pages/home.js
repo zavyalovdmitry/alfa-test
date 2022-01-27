@@ -14,11 +14,6 @@ function Home({ dogsData, fetchDogs }) {
   const [showDeleted, setShowDeleted] = useState(false);
   const [showLiked, setShowLiked] = useState(false);
 
-  const saveToLocalStorage = () => {
-    localStorage.setItem('likes', JSON.stringify(showLike));
-    localStorage.setItem('cards', JSON.stringify(showCard));
-  };
-
   useEffect(() => {
     showLike ? localStorage.setItem('likes', JSON.stringify(showLike)) : null;
     showCard ? localStorage.setItem('cards', JSON.stringify(showCard)) : null;
