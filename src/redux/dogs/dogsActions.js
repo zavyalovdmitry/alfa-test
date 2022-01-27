@@ -22,11 +22,11 @@ export const fetchDogsFailure = (error) => ({
 export const fetchDogs = () => (dispatch) => {
   dispatch(fetchDogsRequest());
 
-  fetch(`${DOGS_API}?limit=10&api_key=${API_KEY}`)
+  fetch(`${DOGS_API}?limit=50&order=ASC&api_key=${API_KEY}`)
     .then((response) => response.json())
     .then((data) => {
       const dogs = data;
-      console.log(dogs);
+      // console.log(dogs);
       dispatch(fetchDogsSuccess(dogs));
     })
     .catch((error) => {

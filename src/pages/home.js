@@ -1,13 +1,38 @@
 /* eslint-disable no-shadow */
+/* eslint-disable prefer-spread */
+/* eslint-disable no-unused-expressions */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { CardsContainer } from '../containers/cards';
+// import { connect } from 'react-redux';
+import { HeaderContainer } from '../containers/header';
 import { fetchDogs } from '../redux';
 
 function Home({ dogsData, fetchDogs }) {
+  const [showLike, setShowLike] = useState();
+  const [showCard, setShowCard] = useState();
+
   useEffect(() => {
     fetchDogs();
   }, []);
+
+  useEffect(() => {
+    if (!dogsData.loading) {
+      // !localStorage.getItem('cards')
+      //   ?
+      setShowCard(
+        Array.apply(null, Array(dogsData.dogs.length)).map(() => true)
+      );
+      //   : null;
+      // !localStorage.getItem('likes')
+      //   ?
+      setShowLike(
+        Array.apply(null, Array(dogsData.dogs.length)).map(() => false)
+      );
+      // : null;
+    }
+    // console.log(showCard);
+  }, [dogsData.loading]);
 
   // useEffect(() => {
   //   console.log(dogsData);
@@ -17,7 +42,16 @@ function Home({ dogsData, fetchDogs }) {
   return dogsData.loading ? (
     <h2>Loading...</h2>
   ) : (
-    <CardsContainer dogsData={dogsData} />
+    <>
+      <HeaderContainer />
+      <CardsContainer
+        dogsData={dogsData}
+        showLike={showLike}
+        showCard={showCard}
+        setShowCard={setShowCard}
+        setShowLike={setShowLike}
+      />
+    </>
   );
   // return <h2>Loading...</h2>;
 }

@@ -1,5 +1,14 @@
 import React from 'react';
-import { Container, Item, ItemPhoto, ItemTitle } from './styles/cards';
+import {
+  Container,
+  Item,
+  ItemPhoto,
+  ItemTitle,
+  ItemText,
+  DeleteIcon,
+  LikeIcon,
+  UnLikeIcon,
+} from './styles/cards';
 
 export default function Cards({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>;
@@ -15,4 +24,20 @@ Cards.ItemPhoto = function CardsItemPhoto({ children, ...restProps }) {
 
 Cards.ItemTitle = function CardsItemTitle({ children, ...restProps }) {
   return <ItemTitle {...restProps}>{children}</ItemTitle>;
+};
+
+Cards.ItemText = function CardsItemText({ children, ...restProps }) {
+  return <ItemText {...restProps}>{children}</ItemText>;
+};
+
+Cards.DeleteIcon = function CardsDeleteIcon({ children, ...restProps }) {
+  return <DeleteIcon {...restProps}>{children}</DeleteIcon>;
+};
+
+Cards.LikeIcon = function CardsLikeIcon({ children, ...restProps }) {
+  return <LikeIcon {...restProps}>{children}</LikeIcon>;
+};
+
+Cards.UnLikeIcon = function CardsUnLikeIcon({ children, ...restProps }) {
+  return <UnLikeIcon {...restProps}>{children}</UnLikeIcon>;
 };
